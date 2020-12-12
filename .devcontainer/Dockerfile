@@ -6,10 +6,10 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 RUN python -m pip install --upgrade pip
 
-RUN pip install black
-
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python - -y
 ENV PATH "/home/vscode/.poetry/bin:$PATH"
+
+RUN poetry config virtualenvs.in-project false
 
 # Most of my projects use Poe as a script runner
 RUN pip install poethepoet
